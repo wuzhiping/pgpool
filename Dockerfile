@@ -1,5 +1,6 @@
 FROM shawoo/postgres:11-repmgr
 
+USER root
 RUN buildDependencies="build-essential \
     ca-certificates \
     curl \
@@ -11,7 +12,7 @@ RUN buildDependencies="build-essential \
     apt-transport-https \
     cmake \
     libc++-dev \
-    postgresql-server-dev-$PG_MAJOR" \
+    postgresql-server-dev-11" \
     runtimeDependencies="libc++1" \
   && apt-get update \
   && apt-get install -y --no-install-recommends ${buildDependencies} ${runtimeDependencies}
