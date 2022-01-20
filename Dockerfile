@@ -21,7 +21,7 @@ RUN mkdir -p /tmp/build
 
 WORKDIR /tmp/build
 RUN git clone https://github.com/enterprisedb/mysql_fdw.git
-RUN cd www_fdw \
+RUN cd mysql_fdw \
   && export USE_PGXS=1 \
   && make && make install
   
