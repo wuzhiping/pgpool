@@ -6,7 +6,9 @@ chmod +777 pg0
 Todos:
    * CRUD for Axelor
    * pg_dump
+   ** pg_dump --file axelor.2022-01-20 --username axelor --verbose --format=t --blobs axelor
    * pg_restore
+   ** pg_restore --username axelor --dbname axelor --verbose axelor.2022-01-20
 
 
 psql -U postgres -d axelor
