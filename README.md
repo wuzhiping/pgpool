@@ -14,3 +14,6 @@ Todos:
 psql -U postgres -d axelor
 
 CREATE EXTENSION IF NOT EXISTS unaccent;
+
+# docker build -t shawoo/postgres:11-fdw .
+
