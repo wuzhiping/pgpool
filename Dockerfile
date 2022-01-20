@@ -17,11 +17,28 @@ RUN buildDependencies="build-essential \
   && apt-get install -y --no-install-recommends ${buildDependencies} ${runtimeDependencies}
   
 RUN mkdir -p /tmp/build
+
+WORKDIR /tmp/build
+RUN git clone https://github.com/enterprisedb/mysql_fdw.git -- DOWNLOAD mysql_fdw from git
+RUN cd www_fdw \
+  && export USE_PGXS=1 \
+  && make && make install
+  
 WORKDIR /tmp/build
 RUN git clone https://github.com/cyga/www_fdw.git
 RUN cd www_fdw \
   && export USE_PGXS=1 \
   && make && make install
+# psql -c "CREATE EXTENSION mysql_fdw" db
+
+# CREATE SERVER mysql_server FOREIGN DATA WRAPPER mysql_fdw OPTIONS (host 'xx.xxx.xx.xxx’, port ‘xxxx’);
+
+# CREATE USER MAPPING  FOR “postgres username”
+# SERVER “Give your foreign server a name” 
+# OPTIONS (username 'type mysql username', password 'type mysql password’);
+
+# CREATE FOREIGN TABLE “table name”(id smallint,advert_id smallint, created_at timestamp)
+# SERVER mysql_server OPTIONS (dbname 'remote mysql db name, table_name 'mysql table name');
 
 RUN rm -rf /root/.vpython_cipd_cache /root/.vpython-root \
   && apt-get clean \
