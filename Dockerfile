@@ -20,7 +20,7 @@ RUN buildDependencies="build-essential \
 RUN mkdir -p /tmp/build
 
 WORKDIR /tmp/build
-RUN git clone https://github.com/enterprisedb/mysql_fdw.git -- DOWNLOAD mysql_fdw from git
+RUN git clone https://github.com/enterprisedb/mysql_fdw.git
 RUN cd www_fdw \
   && export USE_PGXS=1 \
   && make && make install
