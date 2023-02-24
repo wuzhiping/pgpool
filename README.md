@@ -15,5 +15,8 @@ psql -U postgres -d axelor
 
 CREATE EXTENSION IF NOT EXISTS unaccent;
 
+ \connect foo;
+ CREATE SCHEMA yourschema;
+ 
 # docker build -t shawoo/postgres:11-fdw .
 
