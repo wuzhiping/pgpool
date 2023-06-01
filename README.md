@@ -9,6 +9,12 @@ Todos:
    ** pg_dump --file axelor.2022-01-20 --username axelor --verbose --format=t --blobs axelor
    * pg_restore
    ** pg_restore --username axelor --dbname axelor --verbose axelor.2022-01-20
+   
+<pre>
+# to be test
+pg_dump --file noco.sql --host "10.17.1.22" --port "5555"  --username axelor --verbose  axelor -c  noco
+psql -U postgres -d noco <noco.sql
+</pre>
 
 
 psql -U postgres -d axelor
